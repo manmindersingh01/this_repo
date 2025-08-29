@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.5rem;
+  
+  /* Main Colors - Based on provided color palette */
+  --primary: 210 80% 59%;        /* #4A90E2 - Blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 165 65% 60%;       /* #50E3C2 - Mint green */
+  --secondary-foreground: 0 0% 0%;
+  --accent: 48 93% 53%;           /* #F1C40F - Yellow */
+  --accent-foreground: 0 0% 0%;
+  
+  /* System Colors */
+  --success: 142 72% 29%;
+  --success-foreground: 210 40% 98%;
+  --success-muted: 142 72% 90%;
+  
+  --warning: 48 93% 53%;          /* #F1C40F - Yellow */
+  --warning-foreground: 0 0% 0%;
+  --warning-muted: 48 93% 90%;
+  
+  --error: 6 78% 57%;             /* #E74C3C - Red */
+  --error-foreground: 210 40% 98%;
+  --error-muted: 6 78% 90%;
+  
+  --info: 210 80% 59%;            /* #4A90E2 - Blue */
+  --info-foreground: 0 0% 100%;
+  --info-muted: 210 80% 90%;
+  
+  /* Surface Colors */
+  --surface: 220 16% 96%;         /* #F5F7FA - Light gray */
+  --surface-foreground: 210 29% 24%;  /* #2C3E50 - Dark blue-gray */
+  --surface-muted: 220 16% 92%;
+  
+  --background: 220 16% 96%;      /* #F5F7FA - Light gray */
+  --foreground: 210 29% 24%;      /* #2C3E50 - Dark blue-gray */
+  
+  --card: 0 0% 100%;
+  --card-foreground: 210 29% 24%; /* #2C3E50 - Dark blue-gray */
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 29% 24%; /* #2C3E50 - Dark blue-gray */
+  
+  --muted: 220 16% 92%;
+  --muted-foreground: 210 29% 45%;
+  
+  /* Color Shades */
+  --primary-50: 210 80% 98%;
+  --primary-100: 210 80% 94%;
+  --primary-200: 210 80% 90%;
+  --primary-300: 210 80% 80%;
+  --primary-400: 210 80% 70%;
+  --primary-500: 210 80% 59%;    /* #4A90E2 - Base blue */
+  --primary-600: 210 80% 50%;
+  --primary-700: 210 80% 40%;
+  --primary-800: 210 80% 30%;
+  --primary-900: 210 80% 20%;
+  
+  --secondary-50: 165 65% 95%;
+  --secondary-100: 165 65% 90%;
+  --secondary-200: 165 65% 80%;
+  --secondary-300: 165 65% 70%;
+  --secondary-400: 165 65% 65%;
+  --secondary-500: 165 65% 60%;  /* #50E3C2 - Base mint */
+  --secondary-600: 165 65% 50%;
+  --secondary-700: 165 65% 40%;
+  --secondary-800: 165 65% 30%;
+  --secondary-900: 165 65% 20%;
+  
+  --accent-50: 48 93% 97%;
+  --accent-100: 48 93% 92%;
+  --accent-200: 48 93% 85%;
+  --accent-300: 48 93% 75%;
+  --accent-400: 48 93% 65%;
+  --accent-500: 48 93% 53%;      /* #F1C40F - Base yellow */
+  --accent-600: 48 93% 45%;
+  --accent-700: 48 93% 35%;
+  --accent-800: 48 93% 25%;
+  --accent-900: 48 93% 15%;
+  
+  /* System Variables */
+  --border: 220 16% 90%;
+  --input: var(--border);
+  --ring: var(--primary);
+}
+
+.dark {
+  --background: 210 29% 10%;      /* Dark version of #2C3E50 */
+  --foreground: 220 16% 90%;      /* Light version of #F5F7FA */
+  
+  --card: 210 29% 15%;            /* Slightly lighter than background */
+  --card-foreground: 220 16% 90%; /* Light version of #F5F7FA */
+  
+  --popover: 210 29% 15%;         /* Slightly lighter than background */
+  --popover-foreground: 220 16% 90%; /* Light version of #F5F7FA */
+  
+  --primary: 210 80% 70%;         /* Lighter version of #4A90E2 */
+  --primary-foreground: 0 0% 0%;
+  
+  --secondary: 165 65% 65%;       /* Lighter version of #50E3C2 */
+  --secondary-foreground: 0 0% 0%;
+  
+  --muted: 210 29% 20%;           /* Muted dark background */
+  --muted-foreground: 220 16% 70%;
+  
+  --accent: 48 93% 60%;           /* Lighter version of #F1C40F */
+  --accent-foreground: 0 0% 0%;
+  
+  --border: 210 29% 25%;          /* Darker border */
+  --input: 210 29% 25%;           /* Darker input */
+  --ring: 210 80% 70%;            /* Lighter ring */
+  
+  /* Dark Mode System Colors */
+  --success: 142 72% 50%;
+  --warning: 48 93% 60%;
+  --error: 6 78% 65%;             /* Lighter version of #E74C3C */
+  --info: 210 80% 70%;            /* Lighter version of #4A90E2 */
+  
+  --surface: 210 29% 15%;         /* Dark surface */
+  --surface-foreground: 220 16% 90%; /* Light text on dark surface */
+  --surface-muted: 210 29% 20%;   /* Slightly lighter than surface */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .todo-card {
+    @apply bg-card text-card-foreground rounded-lg border shadow-sm p-4 mb-3 transition-all duration-200 hover:shadow-md;
+  }
+  
+  .todo-input {
+    @apply flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  .todo-checkbox {
+    @apply h-5 w-5 rounded-md border border-primary text-primary focus:ring-primary focus:ring-offset-background;
+  }
+  
+  .todo-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50;
+  }
+  
+  .todo-button-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50;
+  }
+  
+  .todo-button-danger {
+    @apply bg-error text-error-foreground hover:bg-error/90 rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50;
+  }
+  
+  .todo-header {
+    @apply bg-surface text-surface-foreground py-4 px-6 flex justify-between items-center sticky top-0 z-10 border-b;
+  }
+  
+  .todo-completed-text {
+    @apply line-through text-muted-foreground;
+  }
+  
+  .todo-task-title {
+    @apply text-base font-medium;
+  }
+  
+  .todo-task-description {
+    @apply text-sm text-muted-foreground mt-1;
+  }
+  
+  .todo-section {
+    @apply p-4 md:p-6;
+  }
+  
+  .todo-filter-button {
+    @apply bg-muted text-muted-foreground hover:bg-muted/80 rounded-md px-3 py-1 text-sm transition-colors;
+  }
+  
+  .todo-filter-button-active {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+}
+
+/* Custom animations */
+.task-complete-line {
+  position: relative;
+}
+
+.task-complete-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 1px;
+  width: 0;
+  background-color: currentColor;
+  animation: task-complete 0.3s ease-in-out forwards;
+}
